@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Accept a payment</title>
+    <meta name="description" content="A demo of a payment on Stripe" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+  </head>
+  <script src="https://js.stripe.com/v3/"></script>
+  <body>
+
+
+    <!-- Display a payment form -->
+    <form action="{% url 'hoadues:postcheck_out' %}" method="post"  id="payment-form" data-secret="{{ client_secret }}" >
+      {% csrf_token %}
+      <!-- <div id="link-authentication-element">
+      Stripe.js injects the Link Authentication Element-->
+      <!--
+      </div>
+       -->
+      <div id="payment-element">
+        <!--Stripe.js injects the Payment Element-->
+      </div>
+
+
+
+      <div id="card-element" >
+        <!--Stripe.js injects the card Element-->
+      </div>
+
+      <button id="submit_new">
+         <div class="spinner hidden" id="spinner"></div>
+        <span id="button-text">Pay now</span>
+      </button>
+
+
+      <div id="payment-message" class="hidden"></div>
+    </form>
+
+
+      <link rel="stylesheet" href= "{% static 'hoadues/css/checkout.css'  %}" />
+      <script src="{% static 'hoadues/js/checkout.js'  %}" ></script>
+
+  </body>
+
+</html>
